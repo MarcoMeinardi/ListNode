@@ -6,7 +6,7 @@ int main () {
     struct ListNode* head = NULL;
 
     printf ("from_arry\n");
-    int arr[5] = {1, 2, 3, 4, 5};
+    var arr[5] = {1, 2, 3, 4, 5};
     head = from_array (arr, 5);
     print (head);
 
@@ -27,7 +27,7 @@ int main () {
 
     printf ("push_back\n");
     for (int i = 1; i <= 5; i++) {
-        head = push_back (head, i);
+        head = push_back (head, (var)i);
         print (head);
     }
     printf ("pop\n");
@@ -46,7 +46,7 @@ int main () {
 
     printf ("push_front\n");
     for (int i = 1; i <= 5; i++) {
-        head = push_front (head, i);
+        head = push_front (head, (var)i);
         print (head);
     }
     printf ("find\n");
@@ -55,7 +55,7 @@ int main () {
 
     printf ("to_array\n");
     int dim;
-    int* arr2 = to_array (sub, &dim);
+    var* arr2 = to_array (sub, &dim);
     for (int i = 0; i < dim; i++) {
         printf ("%d ", arr2[i]);
     }

@@ -4,7 +4,7 @@
 // -----------------------------------------------------------------------------------------
 // Constructors
 
-struct ListNode* from_array (int* arr, int dim) {
+struct ListNode* from_array (var* arr, int dim) {
     struct ListNode* head = NULL;
     while (dim--) {
         head = push_front (head, arr[dim]);
@@ -21,7 +21,7 @@ struct ListNode* create (int dim, ...) {
     
     while (dim--) {
         head->next = (struct ListNode*)malloc (sizeof (struct ListNode));
-        head->next->val = va_arg (nodes, int);
+        head->next->val = va_arg (nodes, var);
         head->next->next = NULL;
         head = head->next;
     }
@@ -33,7 +33,7 @@ struct ListNode* create (int dim, ...) {
     return cp;
 }
 
-struct ListNode* random_list (int dim, int range_start, int range_end) {
+struct ListNode* random_list (int dim, var range_start, var range_end) {
     struct ListNode* head = (struct ListNode*)malloc (sizeof (struct ListNode));
     struct ListNode* res = head;
     while (dim--) {
@@ -90,14 +90,14 @@ struct ListNode* copy (struct ListNode* head, int start, int quantity) {
 // -----------------------------------------------------------------------------------------
 // Add
 
-struct ListNode* push_front (struct ListNode* head, int val) {
+struct ListNode* push_front (struct ListNode* head, var val) {
     struct ListNode* new_node = (struct ListNode*)malloc (sizeof (struct ListNode));
     new_node->val = val;
     new_node->next = head;
     return new_node;
 }
 
-struct ListNode* push_back (struct ListNode* head, int val) {
+struct ListNode* push_back (struct ListNode* head, var val) {
     if (!head) {
         return push_front (head, val);
     }
@@ -110,7 +110,7 @@ struct ListNode* push_back (struct ListNode* head, int val) {
     return cp;
 }
 
-struct ListNode* push (struct ListNode* head, int val, int ind) {
+struct ListNode* push (struct ListNode* head, var val, int ind) {
     if (!head && ind != 0) {
         return NULL;
     }
@@ -197,7 +197,7 @@ void print (struct ListNode* head) {
     printf ("\n");
 }
 
-struct ListNode* find (struct ListNode* head, int target) {
+struct ListNode* find (struct ListNode* head, var target) {
     while (head && head->val != target) {
         head = head->next;
     }
@@ -213,10 +213,10 @@ int size (struct ListNode* head) {
     return n;
 }
 
-int* to_array (struct ListNode* head, int* dim) {
-    int* res = NULL;
+var* to_array (struct ListNode* head, int* dim) {
+    var* res = NULL;
     *dim = size (head);
-    res = malloc (*dim * sizeof (int));
+    res = malloc (*dim * sizeof (var));
     int ind = 0;
 
     while (head) {
